@@ -8,9 +8,17 @@ namespace IndividualAssignmentTests
     {
         [Theory]
         [InlineData('C', TemperatureUnit.Celcius)]
+        [InlineData('F', TemperatureUnit.Farenheit)]
+        [InlineData('K', TemperatureUnit.Kelvin)]
         public void GetCorrectTemperature(char unit, TemperatureUnit expectedTemperatureUnit)
         {
             Assert.Equal(expectedTemperatureUnit, Temperature.GetTemperatureUnit(unit));
+        }
+
+        [Fact]
+        public void GetTemperatureShouldThrowOnInvalidUnit()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => Temperature.GetTemperatureUnit('j'));
         }
     }
 }
