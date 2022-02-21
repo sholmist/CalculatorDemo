@@ -1,13 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xunit;
+using TemperatureConversionDemo;
 
 namespace IndividualAssignmentTests
 {
     public class TemperatureConversionDemoTests
     {
-
+        [Theory]
+        [InlineData('C', TemperatureUnit.Celcius)]
+        public void GetCorrectTemperature(char unit, TemperatureUnit expectedTemperatureUnit)
+        {
+            Assert.Equal(expectedTemperatureUnit, Temperature.GetTemperatureUnit(unit));
+        }
     }
 }

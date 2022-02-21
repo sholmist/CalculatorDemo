@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndividualAssignmentTui", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorDemo", "OperatorsDemo\CalculatorDemo.csproj", "{7E6E7DB4-6E1B-487F-A9CE-AC8CCF381C91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorDemoTests", "CalculatorDemoTests\CalculatorDemoTests.csproj", "{FCC6F07D-FF82-463D-BCCD-C540AB916F9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndividualAssignmentTests", "CalculatorDemoTests\IndividualAssignmentTests.csproj", "{FCC6F07D-FF82-463D-BCCD-C540AB916F9B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemperatureConversionDemo", "TemperatureConversionDemo\TemperatureConversionDemo.csproj", "{249182CF-AF10-4501-A617-CB9D5BD45843}"
 EndProject
