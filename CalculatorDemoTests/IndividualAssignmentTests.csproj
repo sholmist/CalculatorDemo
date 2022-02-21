@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OperatorsDemo\CalculatorDemo.csproj" />
+    <ProjectReference Include="..\TemperatureConversionDemo\TemperatureConversionDemo.csproj" />
   </ItemGroup>
 
 </Project>

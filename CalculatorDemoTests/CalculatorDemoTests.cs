@@ -2,7 +2,7 @@ using Xunit;
 using CalculatorDemo;
 using System;
 
-namespace CalculatorDemoTests
+namespace IndividualAssignmentTests
 {
     public class CalculatorDemoTests
     {
