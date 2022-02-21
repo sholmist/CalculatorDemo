@@ -12,7 +12,7 @@
             TemperatureUnit = GetTemperatureUnit(temperatureUnit);
         }
 
-        public TemperatureUnit GetTemperatureUnit(char tempUnit)
+        public static TemperatureUnit GetTemperatureUnit(char tempUnit)
         {
             switch (tempUnit)
             {
@@ -71,6 +71,11 @@
             temperature.TemperatureUnit = tempUnit;
 
             return temperature;
+        }
+
+        public override string ToString()
+        {
+            return $"The temperature is {Value} {TemperatureUnit}";
         }
     }
 }
