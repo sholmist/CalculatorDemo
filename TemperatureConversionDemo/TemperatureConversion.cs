@@ -23,7 +23,9 @@ namespace TemperatureConversionDemo
 
             currentUnit = input.Last();
 
-            input.Remove(input.Count());
+            input = input.TrimEnd(currentUnit);
+
+            Console.WriteLine(input);
 
             Temperature temperature = new Temperature(decimal.Parse(input), currentUnit);
 
@@ -33,7 +35,7 @@ namespace TemperatureConversionDemo
 
             newUnit = char.Parse(Console.ReadLine().ToUpper());
 
-            temperature = temperature.ConvertTemperature(temperature, Temperature.GetTemperatureUnit(newUnit));
+            temperature.ConvertTemperature(Temperature.GetTemperatureUnit(newUnit));
 
             // Declare converted temperature
 
