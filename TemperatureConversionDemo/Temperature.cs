@@ -35,7 +35,7 @@
                     switch (tempUnit)
                     {
                         case TemperatureUnit.Farenheit:
-                            Value = Value * 9/5 + 32;
+                            Value = Value * 9 / 5 + 32;
                             break;
                         case TemperatureUnit.Kelvin:
                             Value += 273.15m;
@@ -46,10 +46,10 @@
                     switch (tempUnit)
                     {
                         case TemperatureUnit.Celcius:
-                            Value = Value * 5/9 - 32;
+                            Value = Value * 5 / 9 - 32;
                             break;
                         case TemperatureUnit.Kelvin:
-                            Value = Value * 5/9 + 459.67m;
+                            Value = Value * 5 / 9 + 459.67m;
                             break;
                     }
                     break;
@@ -60,7 +60,7 @@
                             Value -= (decimal)273.15;
                             break;
                         case TemperatureUnit.Farenheit:
-                            Value = Value * 9/5 - 459.67m;
+                            Value = Value * 9 / 5 - 459.67m;
                             break;
                     }
                     break;
@@ -69,6 +69,24 @@
             }
 
             TemperatureUnit = tempUnit;
+
+        }
+
+        public static bool operator ==(Temperature temp1, Temperature temp2)
+        {
+            if (temp1.Value == temp2.Value && temp1.TemperatureUnit == temp2.TemperatureUnit)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool operator !=(Temperature temp1, Temperature temp2)
+        {
+            if (temp1.Value == temp2.Value && temp1.TemperatureUnit == temp2.TemperatureUnit)
+            {
+                return false;
+            }
+            return true;
         }
 
         public override string ToString()
