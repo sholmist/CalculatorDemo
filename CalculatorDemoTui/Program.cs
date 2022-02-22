@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CalculatorDemo;
-using TemperatureConversionDemo;
+using OperationsDemo;
 
-TemperatureConversion.Main();
-//OperationsDemo.Calculator.Main();
+
+OperationsDemo.Calculator.Main();
