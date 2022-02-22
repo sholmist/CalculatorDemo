@@ -27,18 +27,18 @@
             }
         }
 
-        public Temperature ConvertTemperature(Temperature temperature, TemperatureUnit tempUnit)
+        public void ConvertTemperature(TemperatureUnit tempUnit)
         {
-            switch (temperature.TemperatureUnit)
+            switch (TemperatureUnit)
             {
                 case TemperatureUnit.Celcius:
                     switch (tempUnit)
                     {
                         case TemperatureUnit.Farenheit:
-                            temperature.Value *= 9/5 + 32;
+                            Value = Value * 9/5 + 32;
                             break;
                         case TemperatureUnit.Kelvin:
-                            temperature.Value += (decimal)273.15;
+                            Value += 273.15m;
                             break;
                     }
                     break;
@@ -46,10 +46,10 @@
                     switch (tempUnit)
                     {
                         case TemperatureUnit.Celcius:
-                            temperature.Value *= 5/9 - 32;
+                            Value = Value * 5/9 - 32;
                             break;
                         case TemperatureUnit.Kelvin:
-                            temperature.Value *= 5/9 + (decimal)459.67;
+                            Value = Value * 5/9 + 459.67m;
                             break;
                     }
                     break;
@@ -57,10 +57,10 @@
                     switch (tempUnit)
                     {
                         case TemperatureUnit.Celcius:
-                            temperature.Value -= (decimal)273.15;
+                            Value -= (decimal)273.15;
                             break;
                         case TemperatureUnit.Farenheit:
-                            temperature.Value *= 9 / 5 - (decimal)459.67;
+                            Value = Value * 9/5 - 459.67m;
                             break;
                     }
                     break;
@@ -68,9 +68,7 @@
                     throw new ArgumentOutOfRangeException("Unknown temperature unit");
             }
 
-            temperature.TemperatureUnit = tempUnit;
-
-            return temperature;
+            TemperatureUnit = tempUnit;
         }
 
         public override string ToString()
