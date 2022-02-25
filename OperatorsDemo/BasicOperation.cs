@@ -5,9 +5,9 @@ namespace CalculatorDemo
 
     public class BasicOperation
     {
-        Operator Operator;
-        decimal Number1;
-        decimal Number2;
+        readonly Operator Operator;
+        readonly decimal Number1;
+        readonly decimal Number2;
 
         public BasicOperation(Operator @operator, decimal num1, decimal num2)
         {
