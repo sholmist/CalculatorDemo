@@ -1,6 +1,6 @@
 ﻿namespace EasterEggDemo
 {
-    public class EasterEggs
+    public static class EasterEggs
     {
         public static bool IsEasterEgg(string input)
         {
@@ -8,13 +8,16 @@
             {
                 case "xyzzy":
                     Console.WriteLine("Nothing happens");
-                    return true;
+                    break;
                 case "what's 9+10":
                     Console.WriteLine("21");
-                    return true;
+                    break;
                 default:
                     return false;
             }
+            Console.ReadKey();
+            Console.Clear();
+            return true;
         }
     }
 }
