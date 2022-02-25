@@ -44,7 +44,7 @@ namespace IndividualAssignmentTests
         {
             Assert.True(expected != temperature);
             //Assert.Equal(expected, temperature.ConvertTemperature(temperature, temperatureUnit));
-            temperature.ConvertTemperature(temperatureUnit);
+            temperature.ConvertTemperatureToUnit(temperatureUnit);
             Assert.True(expected == temperature);
         }
 
@@ -53,9 +53,18 @@ namespace IndividualAssignmentTests
     {
         public IEnumerator<object[]> GetEnumerator()
         {
-            yield return new object[] { new Temperature(decimal.Zero, 'C'), TemperatureUnit.Farenheit, new Temperature(32, 'F') };
-            yield return new object[] { new Temperature(-132, 'C'), TemperatureUnit.Farenheit, new Temperature(-205.6m, 'F') };
-            yield return new object[] { new Temperature(132, 'C'), TemperatureUnit.Farenheit, new Temperature(269.6m, 'F') };
+            yield return new object[] { 
+                new Temperature(decimal.Zero, TemperatureUnit.Celcius), 
+                TemperatureUnit.Farenheit, 
+                new Temperature(32, TemperatureUnit.Farenheit) };
+            yield return new object[] { 
+                new Temperature(-132, TemperatureUnit.Celcius), 
+                TemperatureUnit.Farenheit, 
+                new Temperature(-205.6m, TemperatureUnit.Farenheit) };
+            yield return new object[] { 
+                new Temperature(132, TemperatureUnit.Celcius), 
+                TemperatureUnit.Farenheit, 
+                new Temperature(269.6m, TemperatureUnit.Farenheit) };
 
         }
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -64,9 +73,38 @@ namespace IndividualAssignmentTests
     {
         public IEnumerator<object[]> GetEnumerator()
         {
-            yield return new object[] { new Temperature(decimal.Zero, 'C'), new Temperature(decimal.Zero, 'C'), true };
-            yield return new object[] { new Temperature(decimal.Zero, 'F'), new Temperature(-205.6m, 'F'), false };
-            yield return new object[] { new Temperature(132, 'C'), new Temperature(132, 'F'), false };
+            yield return new object[] {
+                new Temperature(decimal.Zero, TemperatureUnit.Celcius),
+                new Temperature(decimal.Zero, TemperatureUnit.Celcius),
+                true };
+            yield return new object[] { 
+                new Temperature(decimal.Zero, TemperatureUnit.Celcius), 
+                new Temperature(decimal.Zero, TemperatureUnit.Farenheit), 
+                false };
+            yield return new object[] { 
+                new Temperature(decimal.Zero, TemperatureUnit.Farenheit), 
+                new Temperature(decimal.Zero, TemperatureUnit.Kelvin), 
+                false };
+            yield return new object[] { 
+                new Temperature(decimal.Zero, TemperatureUnit.Kelvin), 
+                new Temperature(decimal.Zero, TemperatureUnit.Celcius), 
+                false };
+            yield return new object[] { 
+                new Temperature(decimal.Zero, TemperatureUnit.Farenheit), 
+                new Temperature(decimal.One, TemperatureUnit.Farenheit), 
+                false };
+            yield return new object[] { 
+                new Temperature(decimal.One, TemperatureUnit.Farenheit), 
+                new Temperature(decimal.Zero, TemperatureUnit.Farenheit), 
+                false };
+            yield return new object[] {
+                new Temperature(decimal.MaxValue, TemperatureUnit.Farenheit),
+                new Temperature(decimal.MinValue, TemperatureUnit.Farenheit),
+                false };
+            yield return new object[] {
+                new Temperature(decimal.MinValue, TemperatureUnit.Farenheit),
+                new Temperature(decimal.MaxValue, TemperatureUnit.Farenheit),
+                false };
         }
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
@@ -75,9 +113,38 @@ namespace IndividualAssignmentTests
     {
         public IEnumerator<object[]> GetEnumerator()
         {
-            yield return new object[] { new Temperature(decimal.Zero, 'C'), new Temperature(decimal.Zero, 'C'), false };
-            yield return new object[] { new Temperature(decimal.Zero, 'F'), new Temperature(-205.6m, 'F'), true };
-            yield return new object[] { new Temperature(132, 'C'), new Temperature(132, 'F'), true };
+            yield return new object[] {
+                new Temperature(decimal.Zero, TemperatureUnit.Celcius),
+                new Temperature(decimal.Zero, TemperatureUnit.Celcius),
+                false };
+            yield return new object[] {
+                new Temperature(decimal.Zero, TemperatureUnit.Celcius),
+                new Temperature(decimal.Zero, TemperatureUnit.Farenheit),
+                true };
+            yield return new object[] {
+                new Temperature(decimal.Zero, TemperatureUnit.Farenheit),
+                new Temperature(decimal.Zero, TemperatureUnit.Kelvin),
+                true };
+            yield return new object[] {
+                new Temperature(decimal.Zero, TemperatureUnit.Kelvin),
+                new Temperature(decimal.Zero, TemperatureUnit.Celcius),
+                true };
+            yield return new object[] {
+                new Temperature(decimal.Zero, TemperatureUnit.Farenheit),
+                new Temperature(decimal.One, TemperatureUnit.Farenheit),
+                true };
+            yield return new object[] {
+                new Temperature(decimal.One, TemperatureUnit.Farenheit),
+                new Temperature(decimal.Zero, TemperatureUnit.Farenheit),
+                true };
+            yield return new object[] {
+                new Temperature(decimal.MaxValue, TemperatureUnit.Farenheit),
+                new Temperature(decimal.MinValue, TemperatureUnit.Farenheit),
+                true };
+            yield return new object[] {
+                new Temperature(decimal.MinValue, TemperatureUnit.Farenheit),
+                new Temperature(decimal.MaxValue, TemperatureUnit.Farenheit),
+                true };
         }
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
