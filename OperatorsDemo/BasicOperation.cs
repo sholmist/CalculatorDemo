@@ -16,24 +16,14 @@ namespace CalculatorDemo
             Number2 = num2;
         }
 
-        public BasicOperation() { }
-
-        public decimal Calculate()
+        public decimal Calculate() => Operator switch
         {
-            switch (Operator)
-            {
-                case Operator.Add:
-                    return Addition(Number1, Number2);
-                case Operator.Subtract:
-                    return Subtraction(Number1, Number2);
-                case Operator.Multiply:
-                    return Multiplication(Number1, Number2);
-                case Operator.Divide:
-                    return Division(Number1, Number2);
-                default:
-                    throw new ArgumentException("Not a valid operation");
-            }
-        }
+            Operator.Add => Addition(Number1, Number2),
+            Operator.Subtract => Subtraction(Number1, Number2),
+            Operator.Multiply => Multiplication(Number1, Number2),
+            Operator.Divide => Division(Number1, Number2),
+            _ => throw new NotImplementedException("Operator not implemented"),
+        };
 
         // TODO: https://docs.microsoft.com/en-us/dotnet/api/system.math?view=net-6.0 om man vill göra en mer komplex miniräknare
         static decimal Addition(decimal num1, decimal num2) => num1 + num2;
