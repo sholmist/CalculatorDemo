@@ -6,15 +6,15 @@
         decimal Value;
         TemperatureUnit TemperatureUnit;
 
-        public Temperature(decimal number, char temperatureUnit)
+        public Temperature(decimal number, TemperatureUnit temperatureUnit)
         {
             Value = number;
-            TemperatureUnit = GetTemperatureUnit(temperatureUnit);
+            TemperatureUnit = temperatureUnit;
         }
 
-        public static TemperatureUnit GetTemperatureUnit(char tempUnit)
+        public static TemperatureUnit GetTemperatureUnit(char unit)
         {
-            switch (tempUnit)
+            switch (unit)
             {
                 case 'K':
                     return TemperatureUnit.Kelvin;
@@ -23,53 +23,67 @@
                 case 'C':
                     return TemperatureUnit.Celcius;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(tempUnit));
+                    throw new ArgumentOutOfRangeException(nameof(unit));
             }
         }
 
-        public void ConvertTemperature(TemperatureUnit tempUnit)
+        public void ConvertTemperatureToUnit(TemperatureUnit unit)
         {
             switch (TemperatureUnit)
             {
                 case TemperatureUnit.Celcius:
-                    switch (tempUnit)
-                    {
-                        case TemperatureUnit.Farenheit:
-                            Value = Value * 9 / 5 + 32;
-                            break;
-                        case TemperatureUnit.Kelvin:
-                            Value += 273.15m;
-                            break;
-                    }
+                    ConvertFromCelcius(unit);
                     break;
                 case TemperatureUnit.Farenheit:
-                    switch (tempUnit)
-                    {
-                        case TemperatureUnit.Celcius:
-                            Value = Value * 5 / 9 - 32;
-                            break;
-                        case TemperatureUnit.Kelvin:
-                            Value = Value * 5 / 9 + 459.67m;
-                            break;
-                    }
+                    ConvertFromFarenheit(unit);
                     break;
                 case TemperatureUnit.Kelvin:
-                    switch (tempUnit)
-                    {
-                        case TemperatureUnit.Celcius:
-                            Value -= (decimal)273.15;
-                            break;
-                        case TemperatureUnit.Farenheit:
-                            Value = Value * 9 / 5 - 459.67m;
-                            break;
-                    }
+                    ConvertFromKelvin(unit);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("Unknown temperature unit");
             }
 
-            TemperatureUnit = tempUnit;
+            TemperatureUnit = unit;
+        }
 
+        void ConvertFromCelcius(TemperatureUnit unit)
+        {
+            switch (unit)
+            {
+                case TemperatureUnit.Farenheit:
+                    Value = Value * 9 / 5 + 32;
+                    break;
+                case TemperatureUnit.Kelvin:
+                    Value += 273.15m;
+                    break;
+            }
+        }
+
+        void ConvertFromFarenheit(TemperatureUnit unit)
+        {
+            switch (unit)
+            {
+                case TemperatureUnit.Celcius:
+                    Value = Value * 5 / 9 - 32;
+                    break;
+                case TemperatureUnit.Kelvin:
+                    Value = Value * 5 / 9 + 459.67m;
+                    break;
+            }
+        }
+
+        void ConvertFromKelvin(TemperatureUnit unit)
+        {
+            switch (unit)
+            {
+                case TemperatureUnit.Celcius:
+                    Value -= (decimal)273.15;
+                    break;
+                case TemperatureUnit.Farenheit:
+                    Value = Value * 9 / 5 - 459.67m;
+                    break;
+            }
         }
 
         public static bool operator ==(Temperature temp1, Temperature temp2)
