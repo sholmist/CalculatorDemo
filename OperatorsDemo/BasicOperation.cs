@@ -36,9 +36,9 @@ namespace CalculatorDemo
         }
 
         // TODO: https://docs.microsoft.com/en-us/dotnet/api/system.math?view=net-6.0 om man vill göra en mer komplex miniräknare
-        decimal Addition(decimal num1, decimal num2) => num1 + num2;
-        decimal Subtraction(decimal num1, decimal num2) => num1 - num2;
-        decimal Multiplication(decimal num1, decimal num2) => num1 * num2;
-        decimal Division(decimal num1, decimal num2) => num1 / num2;
+        static decimal Addition(decimal num1, decimal num2) => num1 + num2;
+        static decimal Subtraction(decimal num1, decimal num2) => num1 - num2;
+        static decimal Multiplication(decimal num1, decimal num2) => num1 * num2;
+        static decimal Division(decimal num1, decimal num2) => num1 / num2;
     }
 }
