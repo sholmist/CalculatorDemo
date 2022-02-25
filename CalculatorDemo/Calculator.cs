@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CalculatorDemo;
+using EasterEggDemo;
 
-namespace OperationsDemo
+namespace CalculatorDemo
 {
     public static class Calculator
     {
@@ -34,17 +34,13 @@ namespace OperationsDemo
                         case "quit":
                             repeat = false;
                             continue;
-                        case "xyzzy":
-                            Console.WriteLine("Nothing happens");
-                            continue;
                         case "convert":
-
                             continue;
-                        case "what's 9+10":
-                            continue;
-                        default:
-                            break;
                     }
+
+                    if (EasterEggs.IsEasterEgg(input) == true)
+                        continue;
+
 
                     // TODO: hämta rätt operation
                     input = input.Trim();
@@ -76,9 +72,6 @@ namespace OperationsDemo
                     // TODO: skriv ut resultat
                     Console.WriteLine($"{input} = {result}");
 
-                    // TODO: lägg till operation i lista
-
-                    // TODO: börja om
                 }
                 catch (DivideByZeroException)
                 {

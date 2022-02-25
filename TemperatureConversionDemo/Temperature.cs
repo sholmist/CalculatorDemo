@@ -12,20 +12,13 @@
             TemperatureUnit = temperatureUnit;
         }
 
-        public static TemperatureUnit GetTemperatureUnit(char unit)
+        public static TemperatureUnit GetTemperatureUnit(char unit) => unit switch
         {
-            switch (unit)
-            {
-                case 'K':
-                    return TemperatureUnit.Kelvin;
-                case 'F':
-                    return TemperatureUnit.Farenheit;
-                case 'C':
-                    return TemperatureUnit.Celcius;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(unit));
-            }
-        }
+            'K' => TemperatureUnit.Kelvin,
+            'F' => TemperatureUnit.Farenheit,
+            'C' => TemperatureUnit.Celcius,
+            _ => throw new ArgumentOutOfRangeException(nameof(unit), $"Not expected unit value: {unit}"),
+        };
 
         public void ConvertTemperatureToUnit(TemperatureUnit unit)
         {
@@ -41,7 +34,7 @@
                     ConvertFromKelvin(unit);
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException("Unknown temperature unit");
+                    throw new ArgumentOutOfRangeException(nameof(unit), $"Not expected unit value: {TemperatureUnit}");
             }
 
             TemperatureUnit = unit;

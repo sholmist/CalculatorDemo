@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndividualAssignmentTests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemperatureConversionDemo", "TemperatureConversionDemo\TemperatureConversionDemo.csproj", "{249182CF-AF10-4501-A617-CB9D5BD45843}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterEggDemo", "EasterEggDemo\EasterEggDemo.csproj", "{3B3DE7C5-D22C-4A41-BB6C-B8457AD92D61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{249182CF-AF10-4501-A617-CB9D5BD45843}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{249182CF-AF10-4501-A617-CB9D5BD45843}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{249182CF-AF10-4501-A617-CB9D5BD45843}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B3DE7C5-D22C-4A41-BB6C-B8457AD92D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B3DE7C5-D22C-4A41-BB6C-B8457AD92D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B3DE7C5-D22C-4A41-BB6C-B8457AD92D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B3DE7C5-D22C-4A41-BB6C-B8457AD92D61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
