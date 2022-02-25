@@ -11,8 +11,11 @@ namespace TemperatureConversionDemo
         public static void Main()
         {
             string input;
-            char currentUnit;
-            char newUnit;
+            char inputChar;
+
+            decimal value;
+            TemperatureUnit currentUnit;
+            TemperatureUnit newUnit;
 
             // Create temperature using users input
 
@@ -21,21 +24,25 @@ namespace TemperatureConversionDemo
 
             input = Console.ReadLine().ToUpper();
 
-            currentUnit = input.Last();
+            inputChar = input.Last();
 
-            input = input.TrimEnd(currentUnit);
+            input = input.TrimEnd(inputChar);
 
-            Console.WriteLine(input);
+            currentUnit = Temperature.GetTemperatureUnit(inputChar);
 
-            Temperature temperature = new Temperature(decimal.Parse(input), currentUnit);
+            value = decimal.Parse(input);
+
+            Temperature temperature = new Temperature(value, currentUnit);
 
             Console.WriteLine("Type the unit you want to convert to.");
 
             // Convert temperature according to new unit
 
-            newUnit = char.Parse(Console.ReadLine().ToUpper());
+            inputChar = char.Parse(Console.ReadLine().ToUpper());
 
-            temperature.ConvertTemperature(Temperature.GetTemperatureUnit(newUnit));
+            newUnit = Temperature.GetTemperatureUnit(inputChar);
+
+            temperature.ConvertTemperatureToUnit(newUnit);
 
             // Declare converted temperature
 
