@@ -16,7 +16,7 @@ namespace CalculatorDemo
             Number2 = num2;
         }
 
-        public static BasicOperation AssignOperation(char operation, decimal num1, decimal num2) => operation switch
+        public BasicOperation AssignOperation(char operation, decimal num1, decimal num2) => operation switch
         {
             '+' => new BasicOperation(Operator.Add, num1, num2),
             '-' => new BasicOperation(Operator.Subtract, num1, num2),
