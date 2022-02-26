@@ -13,9 +13,10 @@ namespace CalculatorDemo
         public static void Main()
         {
             // TODO: initera basicoperations
-            Operation basicOperation;
+            Operation operation;
+
             string input;
-            char operation = ' ';
+            char @operator = ' ';
             decimal[] numbers;
             bool repeat = true;
 
@@ -46,30 +47,14 @@ namespace CalculatorDemo
 
                     // TODO: hämta rätt operation
                     input = input.Trim();
-                    operation = input.ToList().Find(x => char.IsDigit(x) == false);
+                    @operator = input.ToList().Find(x => char.IsDigit(x) == false);
 
-                    numbers = input.Split(operation).Select(decimal.Parse).ToArray();
+                    numbers = input.Split(@operator).Select(decimal.Parse).ToArray();
                     //Console.WriteLine(String.Join(",", numbers));
 
-                    switch (operation)
-                    {
-                        case '+':
-                            basicOperation = new Operation(Operator.Add, numbers[0], numbers[1]);
-                            break;
-                        case '-':
-                            basicOperation = new Operation(Operator.Subtract, numbers[0], numbers[1]);
-                            break;
-                        case '*':
-                            basicOperation = new Operation(Operator.Multiply, numbers[0], numbers[1]);
-                            break;
-                        case '/':
-                            basicOperation = new Operation(Operator.Divide, numbers[0], numbers[1]);
-                            break;
-                        default:
-                            throw new NotImplementedException("Unknown operator");
-                    }
+                    operation = Operation.CreateOperation(@operator, numbers[0], numbers[1]);
 
-                    decimal result = basicOperation.Calculate();
+                    decimal result = operation.Calculate();
 
                     // TODO: skriv ut resultat
                     Console.WriteLine($"{input} = {result}");
@@ -85,7 +70,7 @@ namespace CalculatorDemo
                 }
                 catch (NotImplementedException)
                 {
-                    Console.WriteLine($"'{operation}' is not an operator");
+                    Console.WriteLine($"'{@operator}' is not an operator");
                 }
                 catch
                 {
