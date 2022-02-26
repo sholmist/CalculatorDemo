@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EasterEggDemo;
 
 namespace TemperatureConversionDemo
 {
@@ -24,6 +25,10 @@ namespace TemperatureConversionDemo
 
             input = Console.ReadLine().ToUpper();
 
+            // Check for easteregg
+            if (EasterEggs.IsEasterEgg(input) == true) { }
+                //continue;
+
             inputChar = input.Last();
 
             input = input.TrimEnd(inputChar);
@@ -38,9 +43,14 @@ namespace TemperatureConversionDemo
 
             // Convert temperature according to new unit
 
-            inputChar = char.Parse(Console.ReadLine().ToUpper());
+            input = Console.ReadLine().ToUpper();
 
-            newUnit = Temperature.GetTemperatureUnit(inputChar);
+            // Check for easteregg
+
+            if (EasterEggs.IsEasterEgg(input) == true) { }
+                //continue;
+
+            newUnit = Temperature.GetTemperatureUnit(char.Parse(input));
 
             temperature.ConvertTemperatureToUnit(newUnit);
 
