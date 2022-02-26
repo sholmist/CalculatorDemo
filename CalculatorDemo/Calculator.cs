@@ -13,7 +13,7 @@ namespace CalculatorDemo
         public static void Main()
         {
             // TODO: initera basicoperations
-            BasicOperation basicOperation;
+            Operation basicOperation;
             string input;
             char operation = ' ';
             decimal[] numbers;
@@ -54,16 +54,16 @@ namespace CalculatorDemo
                     switch (operation)
                     {
                         case '+':
-                            basicOperation = new BasicOperation(Operator.Add, numbers[0], numbers[1]);
+                            basicOperation = new Operation(Operator.Add, numbers[0], numbers[1]);
                             break;
                         case '-':
-                            basicOperation = new BasicOperation(Operator.Subtract, numbers[0], numbers[1]);
+                            basicOperation = new Operation(Operator.Subtract, numbers[0], numbers[1]);
                             break;
                         case '*':
-                            basicOperation = new BasicOperation(Operator.Multiply, numbers[0], numbers[1]);
+                            basicOperation = new Operation(Operator.Multiply, numbers[0], numbers[1]);
                             break;
                         case '/':
-                            basicOperation = new BasicOperation(Operator.Divide, numbers[0], numbers[1]);
+                            basicOperation = new Operation(Operator.Divide, numbers[0], numbers[1]);
                             break;
                         default:
                             throw new NotImplementedException("Unknown operator");

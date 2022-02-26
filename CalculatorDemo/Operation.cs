@@ -3,25 +3,25 @@ namespace CalculatorDemo
 {
     public enum Operator { Add, Subtract, Multiply, Divide }
 
-    public class BasicOperation
+    public class Operation
     {
         readonly Operator Operator;
         readonly decimal Number1;
         readonly decimal Number2;
 
-        public BasicOperation(Operator @operator, decimal num1, decimal num2)
+        public Operation(Operator @operator, decimal num1, decimal num2)
         {
             Operator = @operator;
             Number1 = num1;
             Number2 = num2;
         }
 
-        public BasicOperation AssignOperation(char operation, decimal num1, decimal num2) => operation switch
+        public Operation AssignOperation(char operation, decimal num1, decimal num2) => operation switch
         {
-            '+' => new BasicOperation(Operator.Add, num1, num2),
-            '-' => new BasicOperation(Operator.Subtract, num1, num2),
-            '*' => new BasicOperation(Operator.Multiply, num1, num2),
-            '/' => new BasicOperation(Operator.Divide, num1, num2),
+            '+' => new Operation(Operator.Add, num1, num2),
+            '-' => new Operation(Operator.Subtract, num1, num2),
+            '*' => new Operation(Operator.Multiply, num1, num2),
+            '/' => new Operation(Operator.Divide, num1, num2),
             _ => throw new NotImplementedException("Operation not implemented"),
         };
 
