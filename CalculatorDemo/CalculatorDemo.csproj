@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasterEggDemo\EasterEggDemo.csproj" />
+    <ProjectReference Include="..\TemperatureConversionDemo\TemperatureConversionDemo.csproj" />
   </ItemGroup>
 
 </Project>

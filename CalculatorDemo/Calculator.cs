@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EasterEggDemo;
+using TemperatureConversionDemo;
 
 namespace CalculatorDemo
 {
@@ -35,6 +36,7 @@ namespace CalculatorDemo
                             repeat = false;
                             continue;
                         case "convert":
+                            TemperatureConversion.Main();
                             continue;
                     }
 
