@@ -1,5 +1,7 @@
 using CalculatorDemo;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Xunit;
 
 namespace IndividualAssignmentTests
@@ -7,11 +9,18 @@ namespace IndividualAssignmentTests
     public class OperationTests
     {
         [Theory]
+        [ClassData(typeof(ExpectedOperationTestData))]
+        public void ShouldCreateExpectedOperation(char C, decimal num1, decimal num2, Operation expected)
+        {
+            Assert.True(expected == Operation.CreateOperation(C, num1, num2));
+        }
+
+
+        [Theory]
         [InlineData(1,2)]
         [InlineData(-3,4)]
         [InlineData(5.4,-6)]
         [InlineData(-2, -4.93)]
-        //[InlineData(decimal.MinValue, decimal.MaxValue)]
         public void AdditionOperationTest(decimal num1, decimal num2)
         {
             Operation basicOperations = new Operation(Operator.Add, num1, num2);
@@ -92,5 +101,22 @@ namespace IndividualAssignmentTests
             Operation divisionMin = new Operation(Operator.Divide, decimal.MinValue, value);
             Assert.Throws<OverflowException>(() => divisionMin.Calculate());
         }
+    }
+    public class ExpectedOperationTestData : IEnumerable<object[]>
+    {
+        const decimal Value = decimal.One;
+        public IEnumerator<object[]> GetEnumerator()
+        {
+            yield return new object[] { '+', Value, Value ,
+                    new Operation(Operator.Add, Value, Value) };
+            yield return new object[] { '-', Value, Value,
+                    new Operation(Operator.Subtract, Value, Value) };
+            yield return new object[] { '*', Value, Value,
+                    new Operation(Operator.Multiply, Value, Value) };
+            yield return new object[] { '/', Value, Value,
+                    new Operation(Operator.Divide, Value, Value) };
+
+        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
