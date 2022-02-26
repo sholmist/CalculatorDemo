@@ -39,5 +39,23 @@ namespace CalculatorDemo
         static decimal Subtraction(decimal num1, decimal num2) => num1 - num2;
         static decimal Multiplication(decimal num1, decimal num2) => num1 * num2;
         static decimal Division(decimal num1, decimal num2) => num1 / num2;
+
+        public static bool operator ==(Operation operation1, Operation operation2)
+        {
+            if (operation1.Operator == operation2.Operator && 
+                operation1.Number1 == operation2.Number1 && 
+                operation1.Number2 == operation2.Number2) 
+                return true;
+            return false;
+        }
+
+        public static bool operator !=(Operation operation1, Operation operation2)
+        {
+            if (operation1.Operator == operation2.Operator &&
+                operation1.Number1 == operation2.Number1 &&
+                operation1.Number2 == operation2.Number2)
+                return false;
+            return true;
+        }
     }
 }
