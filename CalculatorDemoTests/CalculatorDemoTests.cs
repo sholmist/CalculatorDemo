@@ -1,6 +1,6 @@
-using Xunit;
 using CalculatorDemo;
 using System;
+using Xunit;
 
 namespace IndividualAssignmentTests
 {
@@ -17,16 +17,6 @@ namespace IndividualAssignmentTests
             BasicOperation basicOperations = new BasicOperation(Operator.Add, num1, num2);
             decimal result = basicOperations.Calculate();
             Assert.Equal(num1 + num2, result);
-        }
-
-        [Fact]
-        public void ShouldThrowOnOverflow()
-        {
-            BasicOperation additionMax = new BasicOperation(Operator.Add, decimal.MaxValue, decimal.One);
-            Assert.Throws<OverflowException>(() => additionMax.Calculate());
-
-            BasicOperation additionMin = new BasicOperation(Operator.Add, decimal.MinValue, decimal.MinusOne);
-            Assert.Throws<OverflowException>(() => additionMin.Calculate());
         }
 
         [Theory]
@@ -59,6 +49,48 @@ namespace IndividualAssignmentTests
             BasicOperation basicOperations = new BasicOperation(Operator.Divide, decimal.MaxValue, decimal.Zero);
 
             Assert.Throws<DivideByZeroException>(() => basicOperations.Calculate());
+        }
+
+        [Fact]
+        public void AdditionShouldThrowOnOverflow()
+        {
+            BasicOperation additionMax = new BasicOperation(Operator.Add, decimal.MaxValue, decimal.One);
+            Assert.Throws<OverflowException>(() => additionMax.Calculate());
+
+            BasicOperation additionMin = new BasicOperation(Operator.Add, decimal.MinValue, decimal.MinusOne);
+            Assert.Throws<OverflowException>(() => additionMin.Calculate());
+        }
+
+        [Fact]
+        public void SubtractionShouldThrowOnOverflow()
+        {
+            BasicOperation subtractionMax = new BasicOperation(Operator.Subtract, decimal.MaxValue, decimal.MinusOne);
+            Assert.Throws<OverflowException>(() => subtractionMax.Calculate());
+
+            BasicOperation subtractionMin = new BasicOperation(Operator.Subtract, decimal.MinValue, decimal.One);
+            Assert.Throws<OverflowException>(() => subtractionMin.Calculate());
+        }
+
+        [Fact]
+        public void MultiplicationShouldThrowOnOverflow()
+        {
+            BasicOperation multiplicationMax = new BasicOperation(Operator.Multiply, decimal.MaxValue, decimal.MaxValue);
+            Assert.Throws<OverflowException>(() => multiplicationMax.Calculate());
+
+            BasicOperation multiplicationMin = new BasicOperation(Operator.Multiply, decimal.MinValue, decimal.MaxValue);
+            Assert.Throws<OverflowException>(() => multiplicationMin.Calculate());
+        }
+
+        [Fact]
+        public void DivisionShouldThrowOnOverflow()
+        {
+            const decimal value = 0.5m;
+
+            BasicOperation divisionMax = new BasicOperation(Operator.Divide, decimal.MaxValue, value);
+            Assert.Throws<OverflowException>(() => divisionMax.Calculate());
+
+            BasicOperation divisionMin = new BasicOperation(Operator.Divide, decimal.MinValue, value);
+            Assert.Throws<OverflowException>(() => divisionMin.Calculate());
         }
     }
 }
