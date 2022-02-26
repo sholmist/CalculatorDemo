@@ -4,7 +4,7 @@ using Xunit;
 
 namespace IndividualAssignmentTests
 {
-    public class CalculatorDemoTests
+    public class OperationTests
     {
         [Theory]
         [InlineData(1,2)]
