@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CalculatorDemoTests\IndividualAssignmentTests.csproj" />
+    <ProjectReference Include="..\CalculatorDemo\CalculatorDemo.csproj" />
     <ProjectReference Include="..\EasterEggDemo\EasterEggDemo.csproj" />
-    <ProjectReference Include="..\OperatorsDemo\CalculatorDemo.csproj" />
+    <ProjectReference Include="..\TemperatureConversionDemo\TemperatureConversionDemo.csproj" />
   </ItemGroup>
 
 </Project>
