@@ -26,14 +26,14 @@ namespace IndividualAssignmentTests
         // TODO Test for override == != VETTIGARE
         [Theory]
         [ClassData(typeof(EqualToTestData))]
-        public void EqualToOverrideShouldReturnExpectedValue(Temperature temp1, Temperature temp2, bool expected)
+        public void EqualToShouldReturnExpected(Temperature temp1, Temperature temp2, bool expected)
         {
             Assert.Equal(expected, temp1 == temp2);
         }
 
         [Theory]
         [ClassData(typeof(NotEqualToTestData))]
-        public void NotEqualToOverrideShouldReturnExpectedValue(Temperature temp1, Temperature temp2, bool expected)
+        public void NotEqualToShouldReturnExpected(Temperature temp1, Temperature temp2, bool expected)
         {
             Assert.Equal(expected, temp1 != temp2);
         }
