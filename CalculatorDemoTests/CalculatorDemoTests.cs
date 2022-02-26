@@ -19,6 +19,16 @@ namespace IndividualAssignmentTests
             Assert.Equal(num1 + num2, result);
         }
 
+        [Fact]
+        public void ShouldThrowOnOverflow()
+        {
+            BasicOperation additionMax = new BasicOperation(Operator.Add, decimal.MaxValue, decimal.One);
+            Assert.Throws<OverflowException>(() => additionMax.Calculate());
+
+            BasicOperation additionMin = new BasicOperation(Operator.Add, decimal.MinValue, decimal.MinusOne);
+            Assert.Throws<OverflowException>(() => additionMin.Calculate());
+        }
+
         [Theory]
         [InlineData(1, 2)]
         [InlineData(-3, 4)]
@@ -31,7 +41,6 @@ namespace IndividualAssignmentTests
             Assert.Equal(num1 - num2, result);
         }
 
-        // TODO: Testa om det går över double max och min value
         [Theory]
         [InlineData(1, 2)]
         [InlineData(-3, 4)]
@@ -44,20 +53,12 @@ namespace IndividualAssignmentTests
             Assert.Equal(num1 * num2, result);
         }
 
-        [Theory]
-        [InlineData(1, 2)]
-        [InlineData(-3, 4)]
-        [InlineData(5.4, -6)]
-        [InlineData(-2, -4.93)]
-        [InlineData(2, 0)]
-        public void DivisionOperationTest(decimal num1, decimal num2)
+        [Fact]
+        public void ShouldThrowOnDivisionByZero()
         {
-            BasicOperation basicOperations = new BasicOperation(Operator.Divide, num1, num2);
-            decimal result = basicOperations.Calculate();
-            Assert.Equal(num1 / num2, result);
+            BasicOperation basicOperations = new BasicOperation(Operator.Divide, decimal.MaxValue, decimal.Zero);
 
-            // Test how method handles division by 0
-
+            Assert.Throws<DivideByZeroException>(() => basicOperations.Calculate());
         }
     }
 }
